@@ -77,6 +77,6 @@ class AuthenticatedSessionController extends Controller
         }
 
         Auth::login($userRegistered);
-        return redirect('/dashboard');
+        return redirect('/');
     }
 }
