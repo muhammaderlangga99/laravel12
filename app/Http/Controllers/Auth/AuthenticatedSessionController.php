@@ -62,14 +62,14 @@ class AuthenticatedSessionController extends Controller
         $googleUser = Socialite::driver('google')->user();
         $userRegistered = User::where('google_id', $googleUser->id)->first();
 
-        if (! $userRegistered) {
-            $user = User::updateOrCreate([
-                'github_id' => $googleUser->id,
-            ], [
+        if (!$userRegistered) {
+            $user = User::create([
+                'google_id' => $googleUser->id,
                 'name' => $googleUser->name,
                 'email' => $googleUser->email,
-                'github_token' => $googleUser->token,
-                'github_refresh_token' => $googleUser->refreshToken,
+                'google_token' => $googleUser->token,
+                'google_refresh_token' => $googleUser->refreshToken,
+                'avatar' => $googleUser->avatar,
             ]);
 
             Auth::login($user);
