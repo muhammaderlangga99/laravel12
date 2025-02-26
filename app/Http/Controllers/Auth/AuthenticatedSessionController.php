@@ -60,18 +60,23 @@ class AuthenticatedSessionController extends Controller
     public function handleGoogleCallback()
     {
         $googleUser = Socialite::driver('google')->user();
+        $userRegistered = User::where('google_id', $googleUser->id)->first();
 
-        $user = User::updateOrCreate([
-            'github_id' => $googleUser->id,
-        ], [
-            'name' => $googleUser->name,
-            'email' => $googleUser->email,
-            'github_token' => $googleUser->token,
-            'github_refresh_token' => $googleUser->refreshToken,
-        ]);
+        if (! $userRegistered) {
+            $user = User::updateOrCreate([
+                'github_id' => $googleUser->id,
+            ], [
+                'name' => $googleUser->name,
+                'email' => $googleUser->email,
+                'github_token' => $googleUser->token,
+                'github_refresh_token' => $googleUser->refreshToken,
+            ]);
 
-        Auth::login($user);
+            Auth::login($user);
+            return redirect('/');
+        }
 
+        Auth::login($userRegistered);
         return redirect('/dashboard');
     }
 }
