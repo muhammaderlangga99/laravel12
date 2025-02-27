@@ -37,6 +37,15 @@ export default function AuthSplitLayout({ children, title, description }: AuthLa
                         <h1 className="text-xl font-medium">{title}</h1>
                         <p className="text-muted-foreground text-sm text-balance">{description}</p>
                     </div>
+                    <a href="auth/redirect" className="mb-4 flex items-center gap-2 justify-center border-2  py-2 rounded-xl tracking-wide">
+                        <img src="/img/Google.png" className='w-4 h-4' alt="" />
+                        Sign in / Sign up with Google
+                    </a>
+                    <div className="flex items-center">
+                        <div className="flex-grow border-t border-gray-600"></div>
+                        <span className="mx-4 text-gray-600 text-xs font-semibold">OR</span>
+                        <div className="flex-grow border-t border-gray-600"></div>
+                    </div>
                     {children}
                 </div>
             </div>
