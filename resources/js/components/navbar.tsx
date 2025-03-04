@@ -57,13 +57,13 @@ export default function Navigation({ auth }: { auth: { user: User } }) {
                     {/* <ModeToggle /> */}
                     {auth.user ? (
                         <li className=''>
-                            <Link href={route('dashboard')} className='text-sm bg-zinc-200 dark:bg-zinc-800  rounded-xl text-zinc-950 border border-zinc-400 dark:border-zinc-700 flex items-center justify-center gap-2 dark:text-white relative lowercase tracking-wider pr-3 font-light'>
+                            <Link href={route('dashboard')} className='text-sm bg-zinc-100 dark:bg-zinc-800 rounded-xl text-zinc-950 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center gap-2 dark:text-white capitalize relative tracking-wider pr-3 '>
                                 {/* avatar */}
                                 <div className="w-8 h-8 relative flex justify-between m-auto rounded-l-xl overflow-hidden">
                                     { auth.user.avatar && <img src={auth.user.avatar} alt={auth.user.name} className='w-full object-cover m-auto' /> }
                                     <div className="h-full w-4 end-0 absolute bg-gradient-to-r via-transparent from-transparent  to-zinc-200 dark:to-zinc-800"></div>
                                 </div>
-                                {auth.user.name.length  > 0 ? auth.user.name.split(' ')[1] : auth.user.name}. 
+                                {auth.user.name.length  > 0 ? auth.user.name.split(' ')[1] : auth.user.name}
                             </Link>
                         </li>
                     ) : (
