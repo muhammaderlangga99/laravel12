@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -61,11 +62,11 @@ class AuthenticatedSessionController extends Controller
     {
         $googleUser = Socialite::driver('google')->user();
         $userRegistered = User::where('google_id', $googleUser->id)->first();
-
+        $capitalized = Str::title($googleUser->name);
         if (!$userRegistered) {
             $user = User::create([
                 'google_id' => $googleUser->id,
-                'name' => $googleUser->name,
+                'name' => $capitalized,
                 'email' => $googleUser->email,
                 'google_token' => $googleUser->token,
                 'google_refresh_token' => $googleUser->refreshToken,
