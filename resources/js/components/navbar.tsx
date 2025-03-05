@@ -67,7 +67,7 @@ export default function Navigation({ auth }: { auth: { user: User } }) {
                                         <AvatarFallback className="bg-neutral-200 overflow-hidden rounded-l-xl rounded-r-none w-full object-cover m-auto text-black dark:bg-neutral-700 dark:text-white">
                                             {getInitials(auth.user.name)}
                                         </AvatarFallback>
-                                    <div className="h-full w-4 end-0 absolute bg-gradient-to-r via-transparent from-transparent to-zinc-200 dark:to-zinc-900"></div>
+                                    <div className="h-full w-4 end-0 absolute bg-gradient-to-r via-transparent from-transparent to-zinc-100 dark:to-zinc-900"></div>
                                 </Avatar>
                                     <span>{
                                         auth.user.name.length > 10 ? auth.user.name.split(' ')[1] : auth.user.name
